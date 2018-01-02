@@ -1,0 +1,68 @@
+extends ../template
+
+block variables
+    - var title = 'Мои работы'
+
+block content
+    include ../common/hero.pug
+    section.section.my_works
+        .my_works__title 
+            .my_works__triangle
+                svg.triangle-left.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="0 0 500 85")
+                    polygon(points='0,0   0,86   500.8,86   500.8,75.5')                    
+            
+                svg.triangle-right.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="500 0 500 85")
+                    polygon(points='1000,0   1000,86   500,86   500,75.5') 
+            .section__title Мои работы 
+        .my_works__left
+            .project
+                .section__title.project_title Сайт школы онлайн Образования
+                .project__technologes HTML, CSS, JavaScript
+                .site_btn
+                    a(href=0).site_link.site_link-round Посмотреть сайт
+        .my_works__right_up
+            img(src='assets/images/pic/project_pages.png').pages_pic
+        
+        .my_works__right_down
+            .slider_btns.slider_left
+                img(src='assets/images/pic/prev_site.png').pages_pic.pages_pic-slider
+                .slider_left__arrow
+
+            .slider_btns.slider_right
+                img(src='assets/images/pic/next_site.png').pages_pic.pages_pic-slider
+                .slider_right__arrow
+
+    section.section.review
+        img(src='assets/images/pic/review_bg.png').review_img
+        img(src='assets/images/pic/list1.png').review-list1_img
+        img(src='assets/images/pic/list2.png').review-list2_img
+        img(src='assets/images/pic/list3.png').review-list3_img
+        .section__title.section__title-review Others about me
+        - var text1 = "Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!"
+        - var text2 = "Этот код выдержит любые испытания. Только пожалуйста, не загружается сайт на слишком старых браузерах!"
+        
+        mixin review(avatar, review_text, person, position)
+            li.review_item
+                img(src=avatar).review_item__img
+                p.review_item__text=review_text
+                .review_item__person.name=person 
+                .review_item__person.position=position
+
+        
+        ul.review__review_area
+            +review('assets/images/pic/review_ava1.png', text1, 'Ковальчук Дмитрий', ' — основатель Loftschool')
+            +review('assets/images/pic/review_ava2.png', text2, 'Сабанцев Владимир', ' — преподаватель')
+
+        form.review__form
+            .contact_form
+                .section__title.form_title Contact me
+                .contact_form__fields
+                        input(class='contact_form__input' id='name' data-error = 'fill field' name='name' type='text' placeholder='Name')
+                .contact_form__fields
+                        input(class='contact_form__input' id='e-mail' data-error = 'fill field' name='e-mail' placeholder='Email')
+                .contact_form__fields
+                        textarea(class='contact_form__textarea' id='message' data-error = 'fill field' name='message' type='text' rows='3' placeholder='Your message')
+                .review__button
+                    button.form_button.form_button-left Send
+                    button.form_button.form_button-right Clear    
+    include ../common/footer.pug

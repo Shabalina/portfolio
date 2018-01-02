@@ -1,0 +1,47 @@
+@mixin circle($width, $color) {
+  width: $width;
+  height: $width;
+  border-radius: $width/2;
+  background-color: $color;
+  border: 2px solid white;
+}
+
+@mixin cover(){
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+@mixin tablets() {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+
+@mixin roboto ($weight: light, $style: normal) {
+	font-family: 'robotobold', 'robotobold_italic', 'robotoitalic', 'robotolight', 'robotolight_italic' ,'robotoregular', 'robotomedium_italic', 'robotomedium';
+
+	@if $weight == light {
+		font-weight: 300;
+	}
+
+	@if $weight == medium {
+		font-weight: 500;
+	}
+
+	@if $weight == bold {
+		font-weight: 700;
+    }
+    
+    @if $style == normal {
+		font-style: normal;
+    }
+    
+    @if $style == italic {
+		font-style: italic;
+	}
+}
+
+
+

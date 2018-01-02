@@ -1,0 +1,125 @@
+.my_works {
+    height: 110vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 16% 60% 24%;
+    grid-template-areas: 
+      "title title"  
+      "info display"
+      "info btns";
+  
+    @include tablets {
+      grid-template-columns: 100%;
+      grid-template-rows: 400px 200px 300px;
+      grid-template-areas: 
+        "title"
+        "display"
+        "info"
+        "btns";
+    }
+  }  
+  .my_works__title {
+    position: relative;
+    background: #f8f9f5;
+    grid-area: title;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .my_works__triangle{
+    height: 100%;
+    width: 100%;
+    position: absolute;  
+    top: -100%;
+    right: 0;  
+    left: 0;  
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .my_works__left {
+    background: #ebefe2;
+    grid-area: info;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .project {
+    height: 40%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+  }
+
+  .project_title {
+    color: #566358;
+    font-size: rem(25px);
+    line-height: rem(35px);
+  }
+
+  .project__technologes{
+    color: #4e8839;
+    @include roboto (medium, normal);
+ //   font-family: Roboto;
+    font-size: rem(14px);
+  //  font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 14%;
+    padding-top: 10%;
+  }
+
+  .site_link-round{    
+  border-radius: rem(35px);
+  &:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: ' ';
+    @include circle(5px, #fff);
+    margin: 0 rem(12px);
+  }
+}
+
+  .my_works__right_up {
+    background: #e1e4d7;
+    grid-area: display;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pages_pic{
+    width: 100%;
+    &.pages_pic-slider{
+      height: 100%;
+      z-index: -1;
+    }
+  }
+  
+  .my_works__right_down {
+    grid-area: btns;
+    display: flex;
+  //  width: 100%;
+    flex-direction: row;
+
+  }
+
+  .slider_btns{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 50%;
+    &.slider_left{
+      background: rgba(147, 153, 141, 0.7);
+    }
+    &.slider_right{
+    background: rgba(176, 183, 170, 0.7);
+    }
+  }
+
+  

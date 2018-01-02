@@ -1,0 +1,19 @@
+section.section.hero
+        .hero__bg
+            img(src='assets/images/pic/forest_pic.png').hero__bg-img
+        .hero__socials
+            ul.socials
+                each item in ['fb', 'github', 'in']
+                    li.socials__item
+                        a(href=`${item}`).socials__ltem
+        //next block is mix block & element
+        a(href='').hamburger.hero__menu 
+        .hero__sections
+            img(src='assets/images/pic/portfolio-header.svg').hero__sections-img
+        .hero__user
+            .user__pic
+                img(src='assets/images/pic/user_ava.jpg').user__pic-img
+            .user__info
+                .user__name Anastasia Shapovalova
+                .user__data Personal web-developer's site
+        .hero__arrow.arrow_down

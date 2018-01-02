@@ -1,0 +1,36 @@
+extends ../template
+
+block variables
+    - var title = 'Блог'
+
+block content
+    include ../common/hero.pug
+    section.section.blog
+        .blog__triangle
+                svg.triangle-left.triangle-fiil-white(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="0 0 500 85")
+                    polygon(points='0,0   0,86   500.8,86   500.8,75.5')                    
+            
+                svg.triangle-right.triangle-fiil-white(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="500 0 500 85")
+                    polygon(points='1000,0   1000,86   500,86   500,75.5') 
+        .blog__menu
+            ul.post_list
+                each item in ['Самое важное в SASS', 'Самый необходимый набор Gulp плагинов', 'Почему я выбрал Jade']
+                        li.post_list__item
+                            .article #{item}
+        .blog__content
+            - var text1 = "Таким образом начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Разнообразный и богатый опыт новая модель организационной деятельности играет важную роль в формировании новых предложений. Товарищи! новая модель организационной деятельности играет важную роль в формировании систем массового участия."
+            - var text2 = "Таким образом начало повседневной работы по формированию позиции позволяет выполнять важные задания по разработке направлений прогрессивного развития. Разнообразный и богатый опыт новая модель организационной деятельности играет важную роль в формировании новых предложений. Товарищи! новая модель организационной деятельности играет важную роль в формировании систем массового участия."
+            - var date1 = '27 ноября 2016'
+            - var date2 = '12 августа 2016'
+            mixin posts(title, pDate, article_text, image)
+                li.post
+                    .section__title.post__title=title
+                    .post__date=pDate
+                    p.post__text=article_text
+
+            
+            ul.blog__posts
+                +posts('Самое важное в SASS', date1, text1)
+                +posts('Самый необходимый набор Gulp плагинов', date2, text2)
+    include ../common/footer.pug
+    
