@@ -2,6 +2,13 @@ const slides = document.querySelectorAll('#slides .slide');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 const controls = document.querySelectorAll('.controls');
+var sliderData = {
+    "sites":["Сайт школы онлайн Образования", "Дизайн интерьеров", "Сайт студии йоги", "Лендинг магазина бургеров"],
+    "technologes":["HTML, CSS, JavaScript", "Webpack, Gulp", "PHP, Sass, Node.js", "SQL, PUG, VUE.js"],
+    "links":[ "", "", "", ""],
+    "images":["1", "2", "3","4"]
+        
+} 
 
 let currentSlide = 0;
 

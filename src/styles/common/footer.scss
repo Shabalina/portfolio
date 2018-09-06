@@ -14,10 +14,11 @@ p {
     margin: 0;
     &.footer__row-gray{
         background-color: #373e42;
-        height: 72%;
+        height: 85%;
     }
     &.footer__row-green{
         background-color: #6c9c5a;
+        height: 15%;
         
     }
 }
@@ -27,6 +28,12 @@ p {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    &.container-green{
+        justify-content: center;
+    }
+    @include tablets {
+        flex-wrap: wrap;
+    }
 }
 
 .footer__col{
@@ -36,50 +43,85 @@ p {
     text-align: left;
     
     margin-top: 2%;
+    margin-right: 2%;
+    @include tablets {
+        width: 40%;
+        }
+    &.footer__col-right{
+        @include tablets {
+            width: 100%;
+          //  margin-bottom: 2%;
+            }
+    }
+    
+
     &.footer__col-middle{
         border-left: rem(1px) solid rgba(#ffffff, 0.2);
     //    border-left-color:
         border-right: rem(1px) solid rgba(#ffffff, 0.2);
-    
-      //  opacity: 0.2;
-    }
+        @include desktop {
+            width: 45%;
+            }
+        @include tablets {
+            width: 50%;
+            border-right: none;
+        }
+}
 }
 
 .col__row{
     margin-left: rem(30px);
+    position: relative;
+}
+
+.menu{
+    display: flex;
+    flex-direction: row;
 }
 
 .footer__text{
     margin-left: rem(30px);
     color: #ffffff;
     font-family: 'robotolight';
-    //font-size: rem(16px);
     font-size: rem(14px);
- //   font-weight: 300;
- //   line-height: rem(26px);
     line-height: rem(23.69px);
+    @include tablets {
+        line-height: rem(28px);
+    }
     &.footer__text-quote{
         opacity: 0.5;
         font-family: 'robotolight_italic';
     }
     &.footer__text-quote_bold{
-        font-family: 'robotomedium_italic';
+        font-family: 'robotobold_italic';
         opacity: 0.5;
-    }
-    
-    
+    }    
 }
 
-.socials{
-  //  display: flex;
-  //  flex-direction: row;
+.footer__socials{
+    position: absolute;
+    top: 0%;
+    left:0;
+}
+
+
+.sprite_icon-footer{
+    line-height: 2rem;
     display: inline-block;
-    list-style: none;
-}
-
-.socials__item{
-    display: inline;
-    color: wheat;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 10px;
+ //   margin-left: 10px;
+    vertical-align: middle;
+    fill: white;
+    opacity: 0.5;
+    cursor: pointer;
+    &.sprite_icon-footer_vk{
+        margin-top: 12px;
+    }
+    &:hover{
+        opacity: 1; 
+    } 
 }
 
 

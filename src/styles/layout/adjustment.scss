@@ -1,3 +1,12 @@
+html{
+    @include tablets{
+      font-size: rem(15px);
+    }
+    @include phones{
+      font-size: rem(13px);
+    }
+}
+
 html, body {
     padding: 0;
     margin: 0;
@@ -12,22 +21,26 @@ img{
 .wraper{
 
     position: relative;
-    &:after{
+/*    &:after{
         content: '';
         display: block;
         height: $footer-height;
-    }
+    }*/
 }
 
 footer{
     height: $footer-height;
-    margin-top: -$footer-height;
+ //   margin-top: -$footer-height;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    @include tablets {
+    height: $footer-height_tablets;
+    }
     
 }
+
 
 .section__title{
     font-family: "Sansus Webissimo";
@@ -38,7 +51,25 @@ footer{
     line-height: rem(50px);    
     text-align: center;
     max-width: rem(350px);
+    position: relative;
+    padding-bottom: rem(10px);
+    &:after{
+        content:"";
+        position: absolute;
+        width: 30%;
+        bottom: 0;
+        left: 35%;
+        right: 35%;
+        height: 0;
+        border-top: rem(2px) solid #373e42;
+    }
+ //   border-bottom: 1px solid white;
   //  margin-top: rem(30px);
+}
+
+button{    
+  border:none;
+  background-color: rgba(white, 0);
 }
 
 .site_btn{

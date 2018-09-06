@@ -1,13 +1,81 @@
-extends ../template
-
 block variables
     - var title = 'Добро пожаловать'
 
-block content
-    h1 Главная
-    form
-        label(for="email") email
-        input(name="email" id="email")
-        label(for="password") password
-        input(name="password" id="password")
-        button Войти
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+        meta(content="" name="description")
+        meta(content="" name="keywords")
+        meta(content="width=device-width, initial-scale=1" name="viewport")
+        meta(content="ie=edge" http-equiv="x-ua-compatible")
+        link(rel='stylesheet' href='./assets/styles/app.min.css')
+        script(type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js")
+        script(src='https://cdn.jsdelivr.net/npm/vue')
+        script(src='./assets/scripts/bundle.js' defer)
+    body
+        
+        block content
+            .content__button
+                button.auth_button Autorization
+            .content__flipper
+                .flip__container
+                    .flipper
+                        .front
+                            .block_content
+                                .main__block
+                                    .user__pic
+                                        img(src='assets/images/pic/user_ava.jpg').user__pic-img
+                                    .user__info
+                                        .user__name Anastasia Shapovalova
+                                        .user__data Personal web-developer's site
+                                    .user__socials 
+                                        .socials_wrap.social_wrap-index
+                                            svg(width="55" height="55" class="sprite_icon" class="sprite_icon-vk")
+                                                use(xlink:href="assets/images/icons/sprite.svg#vk")
+                                            svg(width="55" height="55" class="sprite_icon")
+                                                use(xlink:href="assets/images/icons/sprite.svg#git")
+                                            svg(width="55" height="55" class="sprite_icon")
+                                                use(xlink:href="assets/images/icons/sprite.svg#in") 
+                                .button__block
+                                    ul.button_list
+                                        - var pages = [{url:'my_works.html', name:'My works'}, {url:'about.html', name:'About me'},{url:'blog.html', name:'Blog'}]
+                                        - var page_list = ['my_works.html', 'about.html', 'blog.html']
+                                        - if (pages.length)
+                                            -for (var i = 0; i < pages.length; i++)
+                                                li.button_list__item                              
+                                                    a(href='/'+ pages[i].url).link_button #{pages[i].name}
+                                                                                    
+                        .back
+                            .block_content
+                                .main__block
+                                    .section__title.login_title Login
+                                    .login_form__fields
+                                        input(class='login_form__input' id='login' data-error = 'fill field' name='login' type='text' placeholder='Login')
+                                    .login_form__fields
+                                        input(class='login_form__input' id='password' data-error = 'fill field' name='password' placeholder='Password')
+                                    .checkbox__row
+                                        label(for="").login__radio.login__radio_checkbox
+                                            input(class='login__radio-elem' id='capcha' name='capcha' value='1' type='checkbox')
+                                            .login__radio-fake
+                                            .login__radio-title Are you human?
+                                    .radio_button__row
+                                        label(for='capcha').login__radio.login__radio_radio
+                                            .login__radio-label Are you sure?
+                                            .login__radio-input
+                                                input(class='login__radio-elem' id='yes' name='radio_capcha' value='yes' type='radio')
+                                                .login__radio-fake
+                                                .login__radio-title Yes I am
+                                        
+                                                input(class='login__radio-elem' id='no' name='radio_capcha' value='no' type='radio')
+                                                .login__radio-fake
+                                                .login__radio-title I am not sure
+                                    .user__socials    
+                                .button__block
+                                    ul.button_list.button_list-welcome 
+                                        each item in ['Main page','Login']
+                                            li.button_list__item                              
+                                                a(src='').link_button #{item}
+            .Background
+                canvas.Background-canvas

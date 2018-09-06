@@ -6,13 +6,7 @@ block variables
 block content
     include ../common/hero.pug
     section.section.my_works
-        .my_works__title 
-            .my_works__triangle
-                svg.triangle-left.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="0 0 500 85")
-                    polygon(points='0,0   0,86   500.8,86   500.8,75.5')                    
-            
-                svg.triangle-right.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="500 0 500 85")
-                    polygon(points='1000,0   1000,86   500,86   500,75.5') 
+        .my_works__title             
             .section__title Мои работы 
         .my_works__left
             .project
@@ -21,16 +15,24 @@ block content
                 .site_btn
                     a(href=0).site_link.site_link-round Посмотреть сайт
         .my_works__right_up
-            img(src='assets/images/pic/project_pages.png').pages_pic
-        
+            img(id = 'big_page' src='assets/images/pic/1th_site.png').pages_pic
+         
         .my_works__right_down
-            .slider_btns.slider_left
-                img(src='assets/images/pic/prev_site.png').pages_pic.pages_pic-slider
-                .slider_left__arrow
+            .slider.slider__left
+                ul.slider__list.slider__list-left
+                   each item in ['3','2', '1','4'] 
+                        li.pages_pic.pages_pic-slider
+                            img(src='assets/images/pic/' + item + 'th_site.png')
+                button.slider__arrow.slider__arrow_left
+                    img(src='assets/images/icons/portf_arrow_down.svg')
 
-            .slider_btns.slider_right
-                img(src='assets/images/pic/next_site.png').pages_pic.pages_pic-slider
-                .slider_right__arrow
+            .slider.slider__right
+                ul.slider__list.slider__list-right
+                    each item in ['2', '3', '4', '1'] 
+                            li.pages_pic.pages_pic-slider
+                                img(src='assets/images/pic/' + item + 'th_site.png')
+                button.slider__arrow.slider__arrow_right
+                    img(src='assets/images/icons/portf_arrow_up.svg')
 
     section.section.review
         img(src='assets/images/pic/review_bg.png').review_img
@@ -53,16 +55,19 @@ block content
             +review('assets/images/pic/review_ava1.png', text1, 'Ковальчук Дмитрий', ' — основатель Loftschool')
             +review('assets/images/pic/review_ava2.png', text2, 'Сабанцев Владимир', ' — преподаватель')
 
-        form.review__form
+        
+        form(action = 'mail.php' method = 'post' class= 'review__form' id = 'review__contact_form')
             .contact_form
-                .section__title.form_title Contact me
-                .contact_form__fields
-                        input(class='contact_form__input' id='name' data-error = 'fill field' name='name' type='text' placeholder='Name')
-                .contact_form__fields
-                        input(class='contact_form__input' id='e-mail' data-error = 'fill field' name='e-mail' placeholder='Email')
-                .contact_form__fields
-                        textarea(class='contact_form__textarea' id='message' data-error = 'fill field' name='message' type='text' rows='3' placeholder='Your message')
-                .review__button
-                    button.form_button.form_button-left Send
-                    button.form_button.form_button-right Clear    
-    include ../common/footer.pug
+                .field_area
+                    .section__title.form_title Contact me
+                    .contact_form__fields
+                            input(class='contact_form__input' id='name' data-error = 'fill field' name='name' type='text' placeholder='Name')
+                    .contact_form__fields
+                            input(class='contact_form__input' id='e-mail' data-error = 'fill field' name='e-mail' type = 'email' placeholder='Email')
+                    .contact_form__fields
+                            textarea(class='contact_form__textarea' id='message' data-error = 'fill field' name='message' type='text' rows='3' placeholder='Your message')
+                .button__block
+                    .button_list
+                        button(class = 'button_list__item form__button-send' name = '' type = 'submit' value = 'send') Send
+                        button(class ='button_list__item form__button-clear' name = '' type = 'reset', value = 'clear') Clear    
+        include ../common/footer.pug

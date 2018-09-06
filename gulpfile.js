@@ -31,9 +31,18 @@ const paths = {
         src: 'src/images/**/*.*',
         dest: 'build/assets/images/'
     },
+    shaders: {
+        src: 'src/shaders/**/*.*',
+        dest: 'build/assets/shaders/'
+    },
+
     scripts: {
         src: 'src/scripts/**/*.js',
         dest: 'build/assets/scripts/'
+    },
+
+    php_scripts: {
+        src: 'src/scripts/**/*.php'        
     },
 
     fonts: {
@@ -102,8 +111,10 @@ function watch() {
     gulp.watch(paths.styles.src, styles);
     gulp.watch(paths.templates.src, templates);
     gulp.watch(paths.images.src, images);
+    gulp.watch(paths.shaders.src, shaders);
     gulp.watch(paths.scripts.src, scripts);
     gulp.watch(paths.fonts.src, fonts);
+    gulp.watch(paths.php_scripts.src, php_scripts);
 }
 
 // локальный сервер + livereload (встроенный)
@@ -118,6 +129,18 @@ function server() {
 function images() {
     return gulp.src(paths.images.src)
         .pipe(gulp.dest(paths.images.dest));
+}
+
+//simply transfer php scripts to the root of the build folder
+function php_scripts() {
+    return gulp.src(paths.php_scripts.src)
+        .pipe(gulp.dest(paths.root));
+}
+
+
+function shaders() {
+    return gulp.src(paths.shaders.src)
+        .pipe(gulp.dest(paths.shaders.dest));
 }
 
 // просто переносим шрифты
@@ -142,6 +165,6 @@ function sprite(){
 
 gulp.task('default', gulp.series(
     clean,
-    gulp.parallel(styles, templates, images, fonts, /*sprite,*/ scripts),
+    gulp.parallel(styles, templates, images, php_scripts, shaders, fonts, /*sprite,*/ scripts),
     gulp.parallel(watch, server)
 ));

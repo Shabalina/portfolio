@@ -2,13 +2,20 @@ section.section.hero
         .hero__bg
             img(src='assets/images/pic/forest_pic.png').hero__bg-img
         .hero__socials
-            ul.socials
-                each item in ['fb', 'github', 'in']
-                    li.socials__item
-                        a(href=`${item}`).socials__ltem
+            .socials_wrap
+                svg(width="55" height="55" class="sprite_icon" class="sprite_icon-vk")
+                    use(xlink:href="assets/images/icons/sprite.svg#vk")
+                svg(width="55" height="55" class="sprite_icon")
+                    use(xlink:href="assets/images/icons/sprite.svg#git")
+                svg(width="55" height="55" class="sprite_icon")
+                    use(xlink:href="assets/images/icons/sprite.svg#in")
+            
         //next block is mix block & element
-        a(href='').hamburger.hero__menu 
-        .hero__sections
+        .hero__hamburger
+            a(href='').hero__hamburger-link
+                svg(width="55" height="55" class="sprite_icon")
+                    use(xlink:href="assets/images/icons/sprite.svg#hmbg")
+        .hero__section
             img(src='assets/images/pic/portfolio-header.svg').hero__sections-img
         .hero__user
             .user__pic
@@ -16,4 +23,12 @@ section.section.hero
             .user__info
                 .user__name Anastasia Shapovalova
                 .user__data Personal web-developer's site
-        .hero__arrow.arrow_down
+        .hero__polygone
+            svg.triangle-left.triangle-fiil-white(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="0 0 500 85")
+                    polygon(points='0,0   0,86   500.8,86   500.8,75.5', fill="#ebefe2") 
+            svg.triangle-right.triangle-fiil-white(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="500 0 500 85")
+                    polygon(points='1000,0   1000,86   500,86   500,75.5', fill="#f4f5f0") 
+        .hero__arrow
+            a(href='').arrow_down
+                svg(width="55" height="55" class="sprite_icon-arrow")
+                    use(xlink:href="assets/images/icons/sprite.svg#arr_down")

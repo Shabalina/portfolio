@@ -4,62 +4,156 @@
     background-color: #f4f5f0;
     display: grid;    
     grid-template-columns: 22% 72%;
-    grid-template-rows: 100%;
+    grid-template-rows: 70% 30%;
+    grid-column-gap: 5%;
     grid-template-areas: 
-      "menu content";  
-      grid-column-gap: 5%;
+      "menu content"
+      "empty empty";    
+      
+      @include tablets {
+        min-height: 150vh;
+        grid-template-columns: 100%;
+      //  grid-template-rows: 12% 55% 13% 20%;
+        grid-template-rows: 70% 30%;
+        grid-column-gap: 0;
+        grid-template-areas: 
+        "content"
+        "empty";
+      }
   } 
 
-  .blog__triangle{
-    width: 100%;
-    position: absolute;  
-    top: rem(-149px); 
-    right: 0;  
-    left: 0;  
+  .sliding_bar{  
+    height: 100%;
+  //  width: 90%;
+    width: 0;
+    position: fixed;
+    transition: 0.5s;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 0 3px rgba(0, 0, 0, 0.2);
+    background-color: #6c9c5a;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    }
+
+  .slide__menu{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  
+
+  .slide_toggle{
+    display: none;
+    position: absolute;
+    right: rem(-15px);
+    height:90px;
+    width:45px;
+    border-radius: 0 90px 90px 0;
+    background-color: #6c9c5a;
+    cursor: pointer;
+    @include tablets {
+      display: block;
+      }
+}
+
+ 
   .blog__menu {
     grid-area: menu;
- //   height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-  }
-
-  .post_list, .blog__posts{
-      width: 80%;
-  //    margin-top: rem(100px);
-      list-style-type: none;  
-  }
-
-  .post_list__item{
-    color: #455a64;
-    @include roboto (bold, normal);
-  //  font-family: Roboto;
-    font-size: rem(14px);
-  //  font-weight: 700;
-    line-height: (20px);
-    text-align: right;
-    margin-bottom: 6%;
-    &.active{
-        color: #4e8839;
+    margin-top: rem(40px);
+    @include tablets {
+      display: none;
     }
   }
 
+  .slide_post_list, .post_list, .blog__posts{
+      width: 80%;
+      list-style-type: none;
+      } 
+
+  .post_list__item{
+    color: #455a64;
+    padding-top: rem(5px);
+    padding-bottom: rem(5px);
+  }
+
+  .slide_post_list__item{
+    opacity: 0.7;
+    color: #ffffff;
+    text-align: right;
+    padding-bottom: rem(35px);
+  }
+  
+  .article{
+    padding-top: rem(5px);
+    padding-bottom: rem(5px);
+    cursor: pointer;
+    text-decoration: none;    
+    font-family: 'robotomedium';
+    font-size: rem(14px);
+    font-weight: 700;
+    line-height: (20px);
+    text-align: right;     
+  }
+
+  .slide_article{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'robotolight';
+    line-height: 26px;
+  }
+
+  .active_name{
+    color: #4e8839  
+  }
+
+  .slide_active_name{
+    opacity: 1; 
+    font-weight: 700; 
+  }
 
   .blog__content {
     grid-area: content;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
- //   align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .blog__posts{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    max-width: 100%;
+    list-style: none;
+    padding: 0;
+  //  z-index: -1;
+  @include tablets {
+    width: 80%;
+    left: 10%;
+    }  
   }
 
   .post{
   //  text-align: left;
-    margin-bottom: 6%;
+  //  margin-bottom: 2%;
+    height: 0%;
+    overflow: hidden;
+    transition: .5s;
+  }
+
+  .activePost {
+    height: 50%;
   }
 
   .post__title{
@@ -68,25 +162,34 @@
     font-weight: 400;
     line-height: rem(41px);
     text-align: left; 
+    &:after{
+      display: none;
+    }
   //  margin-bottom: rem(20px);
   }
 
   .post__date{
     opacity: 0.7;
     color: #4e8839;
-    @include roboto (light, normal);
+    font-family: 'robotolight';
+    font-weight: 400;
     font-size: rem(14px);
     line-height: rem(41px);
-
+    @include tablets {
+      font-size: rem(18px);
+      }
   }
 
   .post__text{
     color: #455a64;
-    @include roboto (light, normal);
+    font-family: 'robotolight';
     font-size: rem(14px);
- //   font-weight: 400;
+    font-weight: 400;
     line-height: rem(26px);
-
+    padding-bottom: rem(10px);
+    @include tablets {
+      font-size: rem(18px);
+      }  
   }
 
 

@@ -1,6 +1,6 @@
 
 //const webpack = require('webpack');
-//const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path')
 //var webpack = require('webpack')
@@ -19,13 +19,27 @@ const config = {
 module.exports = config;*/
 
 module.exports = {
-    entry: './src/scripts/main.js',
+    
+    output: {
+        filename: 'bundle.js'
+    },
+
+    plugins: [
+      new UglifyJSPlugin({
+          sourceMap: true
+      })
+    ],
+    /*
+    entry: {
+      entry: './src/scripts/main.js',
+      app: './src/scripts/app.js',
+    },
     output: {
       path: path.resolve(__dirname, './dist'),
       publicPath: '/dist/',
-      filename: 'build.js'
+      filename: '[name].bundle.js'
     },
-    
+    */
     module: {
       rules: [
         {
@@ -43,6 +57,18 @@ module.exports = {
             // other vue-loader options go here
           }
         },
+        {
+          test: /\.jsx?$/,
+          exclude: /(node_modules|bower_components)/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015']
+          }
+        },
+        {
+          test: /\.(frag|vert)$/,
+          loader: 'webpack-glsl-loader'
+      },
         {
           test: /\.js$/,
           loader: 'babel-loader',

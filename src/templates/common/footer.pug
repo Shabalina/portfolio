@@ -9,18 +9,22 @@ footer.footer
                     nav.footer_menu
                         include ../common/menu.pug
                 .col__row
-                    ul.socials.socials_rounded
-                         each item in ['vk', 'fb', 'in']
-                            li.socials__item
-                                a(href="" class=`socials__item socials__item_${item}`) #{item}
-                                    
+                    .footer__socials
+                        .socials_wrap.socials_wrap-footer
+                            svg(width="55" height="55" class="sprite_icon-footer" class="sprite_icon-footer_vk")
+                                use(xlink:href="assets/images/icons/sprite.svg#vk")
+                            svg(width="55" height="55" class="sprite_icon-footer")
+                                use(xlink:href="assets/images/icons/sprite.svg#git")
+                            svg(width="55" height="55" class="sprite_icon-footer")
+                                use(xlink:href="assets/images/icons/sprite.svg#in")
+                                                
             .footer__col.footer__col-right
                 .footer__text.footer__text-quote
                     p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает, где вы живете. 
                 .footer__text.footer__text-quote_bold 
                     p — Martin Golding
     .footer__row.footer__row-green
-        .container            
+        .container.container-green            
             .footer__text 
                 p © Владимир Астахов | Создано с любовью в LoftSchool | 2016
             

@@ -6,12 +6,7 @@ block variables
 block content
     include ../common/hero.pug
     section.section.about
-        .about__left
-            .about_triangle-left
-                svg.triangle-left.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="0 0 500 85")
-                        polygon(points='0,0   0,86   500.8,86   500.8,75.5') 
-                     
-       
+        .about__left       
             .about__left-title
                 .section__title.block-title About me
             .about__left-content
@@ -25,25 +20,232 @@ block content
                             p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
                         
         .about__right 
-            .about_triangle-right
-                svg.triangle-right.triangle-fiil-gray(xmlns="http://www.w3.org/2000/svg", width="100%", preserveAspectRatio="none", viewbox="500 0 500 85")
-                            polygon(points='1000,0   1000,86   500,86   500,75.5')
-            .section__title.block-subtitle What I can offer for you
+            .section__title.right_block-subtitle What I can offer for you
             .about__right-description.admin_text-block 
                 p Я веб разработчик из Новосибирска. Мне 27 лет. Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
             .about__right-content
-            mixin skillSet(area, skill)
-                li.
                 ul.skills-list 
                     each item in ['Frontend', 'Backend', 'Workflow']
                         li.skills-list__item
                             .skills-row__title #{item}
                             ul.skills-row__list
-                                each skill in ['Html5', 'css3', 'JavaScript']
-                                    li.skills-row__item
+                                case item
+                                    when 'Frontend'                            
+                                        -var list = ['Html5', 'css3', 'JavaScript & jQuery']
+                                    when 'Backend'                            
+                                        -var list = ['PHP', 'MySQL', 'Node.js & npm', 'Mongo.db']    
+                                    when 'Workflow'                            
+                                        -var list = ['Gulp', 'Webpack', 'Git'] 
                                         
-                                        svg.skill__circle
+                                each skill in list        
+                                    li.skills-row__item                                        
                                         .skill__title #{skill}
+                                        svg.circles(viewBox="0 0 110 110")
+                                            circle.circle__first(r="40" cx="50%" cy="50%" fill="none")
+                                            circle.circle__second.circle-70(r="50" cx="50%" cy="50%" transform="rotate(-90 55 55)")
+                                        span.skill__title #{skill}
+    section.section.map
+        div(id='map').map__container
+        script. 
+            function initMap() {
+                var myMap = new google.maps.Map(document.getElementById('map'), {
+                    center: {lat: 51.483, lng: -0.027},
+                    disableDefaultUI: true,
+                    zoomControl: false,
+                    scaleControl: false,
+                    gestureHandling: 'none',
+                    zoomControl: false,
+                    zoom: 14,
+                    styles: [
+                        {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                        {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                        {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                        {
+                            "featureType": "all",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "weight": "2.00"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "geometry.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#9c9c9c"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "all",
+                            "elementType": "labels.text",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "color": "#f2f2f2"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "landscape.man_made",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "saturation": -100
+                                },
+                                {
+                                    "lightness": 45
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#eeeeee"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#7b7b7b"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "visibility": "simplified"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "labels.icon",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "transit",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "visibility": "off"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "all",
+                            "stylers": [
+                                {
+                                    "color": "#4e8839"
+                                },
+                                {
+                                    "visibility": "on"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "geometry.fill",
+                            "stylers": [
+                                {
+                                    "color": "#2e8a3e"
+                                },
+                                {
+                                    "saturation": "-63"
+                                },
+                                {
+                                    "lightness": "14"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "labels.text.fill",
+                            "stylers": [
+                                {
+                                    "color": "#070707"
+                                }
+                            ]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "labels.text.stroke",
+                            "stylers": [
+                                {
+                                    "color": "#ffffff"
+                                }
+                            ]
+                    }
+                    ]
+                })}
+        .map__contact.contacts  
+            .section__title.form_title My contacts   
+            ul.contacts__list  
+                each val, index in {1:'aoshabalina', 2:'shabalinastya@gmail.com', 3:'07835 071657', 4:'London, 2 Octavius Street'}
+                    li.contact
+                        .contact__icon 
+                            img(src='assets/images/icons/contact_' + index + '.svg')
+                        .contact__data #{val}
+        script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTYRTownWHCJdxKQXrC3nb9bOb_FbNxjo&callback=initMap" async defer)        
     include ../common/footer.pug
+
 
     
