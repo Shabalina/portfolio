@@ -1,6 +1,6 @@
 Gulp
 
-To bring project to life you should do next: 
+To bring the project to life you should do next: 
 
 clone this repo
 
