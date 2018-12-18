@@ -1,36 +1,45 @@
 extends ../template
 
 block variables
+    include ../config/_var.pug
     - var title = 'Мои работы'
+    - var projects = [{"name": "Сайт школы онлайн Образования","techs": "HTML, CSS, JavaScript","link": "","img": "assets/images/pic/1th_site.png"},{"name": "Дизайн интерьеров","techs": "Webpack, Gulp","link": "","img": "assets/images/pic/2th_site.png"},{"name": "Сайт студии йоги","techs": "PHP, Sass, Node.js","link": "","img": "assets/images/pic/3th_site.png"},{"name": "Лендинг магазина бургеров","techs": "SQL, Pug, Vue.js","link": "","img": "assets/images/pic/4th_site.png"}]
+    
 
-block content
+block content   
     include ../common/hero.pug
     section.section.my_works
         .my_works__title             
             .section__title Мои работы 
         .my_works__left
-            .project
-                .section__title.project_title Сайт школы онлайн Образования
-                .project__technologes HTML, CSS, JavaScript
-                .site_btn
-                    a(href=0).site_link.site_link-round Посмотреть сайт
+            ul.project-list
+                each index in projects
+                    li.project
+                        .section__title.project_title= index.name
+                        .project__technologes= index.techs
+                        .site_btn
+                            a(href= index.link).site_link.site_link-round Посмотреть сайт
+
         .my_works__right_up
-            img(id = 'big_page' src='assets/images/pic/1th_site.png').pages_pic
-         
+            ul.project-img_list(style={transform: 'rotate(180deg)'})
+                each index in projects
+                    li.right_up-img(style={transform: 'rotate(-180deg)'})
+                        img(id = 'big_page' src= index.img).pages_pic
+            
         .my_works__right_down
             .slider.slider__left
-                ul.slider__list.slider__list-left
-                   each item in ['3','2', '1','4'] 
-                        li.pages_pic.pages_pic-slider
-                            img(src='assets/images/pic/' + item + 'th_site.png')
+                ul.slider__list.slider__list-left(style={top: (projects.length-2)*100+'%', transform: 'rotate(180deg)'})
+                   each index in projects 
+                        li.pages_pic.pages_pic-slider(style={transform: 'rotate(-180deg)'})
+                            img(src= index.img)
                 button.slider__arrow.slider__arrow_left
                     img(src='assets/images/icons/portf_arrow_down.svg')
 
             .slider.slider__right
-                ul.slider__list.slider__list-right
-                    each item in ['2', '3', '4', '1'] 
+                ul.slider__list.slider__list-right(style={top: -100+'%'})
+                    each index in projects 
                             li.pages_pic.pages_pic-slider
-                                img(src='assets/images/pic/' + item + 'th_site.png')
+                                img(src= index.img)
                 button.slider__arrow.slider__arrow_right
                     img(src='assets/images/icons/portf_arrow_up.svg')
 

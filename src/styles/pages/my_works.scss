@@ -50,6 +50,8 @@
     background: #ebefe2;
     grid-area: info;
     display: flex;
+    position: relative;  
+    overflow: hidden;
     justify-content: center;
     align-items: center;
     @include tablets() {   
@@ -57,13 +59,32 @@
     }
    }
 
+   .project-list, .project-img_list{
+    white-space: nowrap;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;  
+    left: 0;
+    list-style: none;
+    padding: 0
+   }
+
   .project {
-    height: 40%;
-    width: 50%;
-    display: flex;
+  //  height: 40%;
+  //  width: 50%;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
     flex-direction: column;    
     justify-content: center;
     align-items: center;
+  }
+
+  .right_up-img{
+    display: inline-block;
+    width: 100%;
+    height: 100%; 
   }
 
   .project_title {
@@ -102,6 +123,8 @@
   .my_works__right_up {
     background: #e1e4d7;
     grid-area: display;
+    position: relative;  
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,10 +132,10 @@
       background: #ebefe2;
     }
   //  max-height: 395px;
-  }
+  }  
 
   .pages_pic{
-    width: 100%;
+    width: 100%;    
     display: flex;
     align-items: center;
     &.pages_pic-slider{
@@ -156,10 +179,10 @@
     padding: 0;
     z-index: -1;
     &.slider__list-right{
-      top: 0;
+     // top: - 100%;
     }
     &.slider__list-left{
-      top: - 300%;
+    //  top: - 300%;
     }
   }
 

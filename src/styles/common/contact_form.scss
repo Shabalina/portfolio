@@ -1,0 +1,106 @@
+.review__form{
+    
+    position: absolute;
+    bottom: 30%;
+    width: rem(320px);
+    height: rem(400px);
+    background-color: rgba(255, 255, 255, 0.15);
+    background-color: #dadbd6;
+    opacity: 0.8;
+  //  margin-bottom: rem(300px);
+    margin-top: rem(20px);
+    
+}
+
+
+.contact_form, .block_content{    
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    
+}
+
+.form_title{
+    color: #566358;
+    font-size: rem(26px);
+    line-height: rem(41px);
+    margin-bottom: 5%;
+    margin-top: 5%;
+    max-width: none;
+}
+
+
+.contact_form__fields{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(15px);
+//    background-color: #ffffff;
+ //   opacity: 0.85;
+ //   border-radius: rem(35px);
+}
+
+.field_area, .main__block{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    margin-bottom: rem(50px);
+
+}
+
+
+.contact_form__input, .contact_form__textarea{ 
+        width: 100%;
+        background-color: #ffffff;
+        opacity: 0.85;
+        border-radius: rem(20px);
+        color: #5d5a55;
+        font-family: 'robotolight';
+        font-size: rem(16px);
+        font-weight: 400;
+        line-height: rem(60px);
+        padding-left: 10%;
+    }
+
+.button__block{
+    // width: 100%;
+        position: absolute;
+        bottom: 0;
+        left:0;
+        right:0
+    }
+
+.button_list{
+    width: 100%;
+    height:rem(50px);
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;  
+    margin: 0;
+    padding: 0;
+
+}
+
+.button_list__item{
+    flex: 1;
+    color: #ffffff;
+    font-family: 'robotoregular';
+    font-size: rem(16px);
+    font-weight: 500;
+    line-height: rem(36px);
+    text-align: center;
+    background-color: #6c9c5a;
+  //  padding-bottom: rem(30px);
+    border-left: rem(1px) solid #ffffff;
+    &:first-child {
+        border-left: none;
+    }
+    text-decoration: none;
+    &:hover{
+        background-color: #4e8839;
+    }
+}
+
